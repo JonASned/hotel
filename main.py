@@ -1,21 +1,27 @@
 
-# Import the Turtle 2D Graphics Module
 import turtle 
 
-# Create Game Window
 screen = turtle.Screen()
 screen.setup(1200, 500)
-screen.bgpic("lobby2.png")
-screen.addshape("touristman.png")
-# Create Sprite
-screen.addshape("touristman.png")
+screen.bgpic("hotellobby.png")
+screen.addshape("touristmanRight.png")
+screen.addshape("touristmanLeft.png")
+screen.addshape("hotelman.png")
 mySprite = turtle.Turtle()
-mySprite.hideturtle() # hide turtle until the the duck image replaces the placeholder shape
-mySprite.penup() # prevent sprite from drawing on screen as it moves
-mySprite.left(90) # rotate sprite for proper placement on screen
-mySprite.shape("touristman.png") # Set Image for Sprite
-mySprite.setposition(0, -90)
+mySprite.speed(0)
+hotelman = turtle.Turtle()
+hotelman.speed(0)
+mySprite.hideturtle()
+mySprite.penup()
+hotelman.penup()
+mySprite.left(90)
+hotelman.left(90)
+mySprite.shape("touristmanRight.png")
+hotelman.shape("hotelman.png")
+mySprite.setposition(0, -80)
+hotelman.setposition(-20, -95)
 mySprite.showturtle()
+hotelman.showturtle()
 
 # Create Player Controls
 '''
@@ -33,18 +39,14 @@ def down():
 def left():
   global mySprite
   mySprite.setposition(mySprite.xcor() - 10, mySprite.ycor())
-  
+  mySprite.shape("touristmanLeft.png")
 def right():
   global mySprite
   mySprite.setposition(mySprite.xcor() + 10, mySprite.ycor())
-  
-def fire():
-  print("FIRE! (space bar pressed)")
-  
+  mySprite.shape("touristmanRight.png")
 # Set Event Listeners for Player Controls
 # screen.onkey(up, "up")
 # screen.onkey(down, "down")
 screen.onkey(left, "left")
 screen.onkey(right, "right")
-screen.onkey(fire, "space")
 screen.listen()
